@@ -7,22 +7,72 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners_layout_bg"
         android:elevation="@dimen/default_6dp">
 
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/viewLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical"
+            android:padding="@dimen/padding">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/edPickupLocation"
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/start_green_dot" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="4dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/dash_line_divider_vertical" />
+
+            <View
+                android:id="@+id/stop"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/stop_red_dot" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/viewLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:hint="@string/hint_pick_location"
-            android:singleLine="true"
-            android:textColor="@color/title_color"
-            android:textColorHint="@color/sub_title_color"
-            android:textCursorDrawable="@drawable/cursor"
-            android:theme="@style/SearchEditText" />
+            android:layout_toEndOf="@+id/viewLayout"
+            android:layout_toRightOf="@+id/viewLayout"
+            android:orientation="vertical"
+            android:padding="@dimen/padding">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edPickupLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_pick_location"
+                android:padding="@dimen/half_padding"
+                android:singleLine="true"
+                android:textColor="@color/title_color"
+                android:textColorHint="@color/sub_title_color"
+                android:textCursorDrawable="@drawable/cursor"
+                android:theme="@style/SearchEditText" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edDestinationLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_destination_location"
+                android:padding="@dimen/half_padding"
+                android:singleLine="true"
+                android:textColor="@color/title_color"
+                android:textColorHint="@color/sub_title_color"
+                android:textCursorDrawable="@drawable/cursor"
+                android:theme="@style/SearchEditText" />
+        </android.support.v7.widget.LinearLayoutCompat>
 
     </RelativeLayout>
 

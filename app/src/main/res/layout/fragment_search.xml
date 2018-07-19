@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/rounded_corners_layout_bg"
+        android:elevation="@dimen/default_6dp">
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edPickupLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:hint="@string/hint_pick_location"
+            android:singleLine="true"
+            android:textColor="@color/title_color"
+            android:textColorHint="@color/sub_title_color"
+            android:textCursorDrawable="@drawable/cursor"
+            android:theme="@style/SearchEditText" />
+
+    </RelativeLayout>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/rv_place_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@android:color/white"-->
+    <!--android:visibility="gone" />-->
+
+</LinearLayout>

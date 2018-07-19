@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PickMeUp</string>
+    <string name="title_activity_main">Map</string>
+
+    <string name="text_location">Location</string>
+    <string name="hint_pick_location">Pickup location</string>
+    <string name="hint_destination_location">Enter destination</string>
+</resources>

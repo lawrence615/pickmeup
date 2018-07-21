@@ -3,6 +3,12 @@
     <string name="title_activity_main">Map</string>
 
     <string name="text_location">Location</string>
+    <string name="text_type_of_vehicle">Select type of vehicle</string>
     <string name="hint_pick_location">Pickup location</string>
     <string name="hint_destination_location">Enter destination</string>
+
+    <!--Vehicle type-->
+    <string name="icon_pickup_label">Pickup</string>
+    <string name="icon_van_label">Van</string>
+    <string name="icon_lorry_label">Lorry</string>
 </resources>

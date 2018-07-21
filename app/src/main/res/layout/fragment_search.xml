@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:padding="@dimen/padding">
+    android:padding="@dimen/padding"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corners_layout_bg"
-        android:elevation="@dimen/default_6dp">
+        android:background="@drawable/rounded_corners_layout_bg">
 
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/viewLayout"
@@ -18,9 +20,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:orientation="vertical"
-            android:padding="@dimen/padding">
+            android:padding="@dimen/padding_2">
 
             <View
+                android:id="@+id/start"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:background="@drawable/start_green_dot" />
@@ -28,7 +31,7 @@
             <View
                 android:id="@+id/line"
                 android:layout_width="4dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
                 android:layout_gravity="center"
                 android:background="@drawable/dash_line_divider_vertical" />
 
@@ -46,15 +49,13 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/viewLayout"
             android:layout_toRightOf="@+id/viewLayout"
-            android:orientation="vertical"
-            android:padding="@dimen/padding">
+            android:orientation="vertical">
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/edPickupLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_pick_location"
-                android:padding="@dimen/half_padding"
                 android:singleLine="true"
                 android:textColor="@color/title_color"
                 android:textColorHint="@color/sub_title_color"
@@ -66,7 +67,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_destination_location"
-                android:padding="@dimen/half_padding"
                 android:singleLine="true"
                 android:textColor="@color/title_color"
                 android:textColorHint="@color/sub_title_color"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,10 +13,116 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity" />
 
-    <fragment
-        android:id="@+id/place_autocomplete_fragment_search_bar"
-        android:name="com.mobidev.pickmeup.view.fragment.PlaceAutoCompleteSearchBarFragment"
+    <!--<fragment-->
+    <!--android:id="@+id/place_autocomplete_fragment_search_bar"-->
+    <!--android:name="com.mobidev.pickmeup.view.fragment.PlaceAutoCompleteSearchBarFragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--tools:layout="@layout/fragment_search" />-->
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+    <!---->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/fragment_search" />
-</RelativeLayout>
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/padding"
+        android:background="@drawable/rounded_corners_layout_bg"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/half_padding"
+            android:text="@string/text_type_of_vehicle" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/dash_line_divider_horizontal" />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/layoutTruck"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imgTruck"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/labelTruck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_pickup_label" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/layoutVan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imgVan"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/labelVan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_van_label" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/layoutLorry"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imgLorry"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/labelLorry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/icon_lorry_label" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
+</android.support.design.widget.CoordinatorLayout>

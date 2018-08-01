@@ -1,16 +1,15 @@
 package com.mobidev.pickmeup
 
 import android.Manifest
-import android.content.DialogInterface
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Criteria
 import android.location.Location
 import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Looper
-import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -72,6 +71,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
                 println("ocation permission already granted")
                 buildGoogleApiClient()
                 mMap.isMyLocationEnabled = true
+
+                val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                val criteria = Criteria()
+                val myLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
+
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(myLocation.latitude, myLocation.longitude), 15F))
             } else {
                 // Request location permission
                 println("Request location permission")
@@ -100,30 +105,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
 
 
     private fun checkLocationPermission() {
-//        val perms = Array<String>(1) { Manifest.permission.ACCESS_FINE_LOCATION }
         val perms = Manifest.permission.ACCESS_FINE_LOCATION
         if (!EasyPermissions.hasPermissions(this, perms.toString())) {
             println("No permissions")
 
             EasyPermissions.requestPermissions(this@MainActivity, "This app needs the Location permission, please accept to use location functionality",
                     MY_PERMISSIONS_REQUEST_LOCATION, perms)
-//            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-//                AlertDialog.Builder(this)
-//                        .setTitle("Location Permission Needed")
-//                        .setMessage("This app needs the Location permission, please accept to use location functionality")
-//                        .setPositiveButton("OK", object : DialogInterface.OnClickListener {
-//                            override fun onClick(dialogInterface: DialogInterface?, i: Int) {
-//                                ActivityCompat.requestPermissions(this@MainActivity, perms, MY_PERMISSIONS_REQUEST_LOCATION)
-//                            }
-//                        })
-//                        .create()
-//                        .show()
-//            } else {
-//
-//            }
         }
-
-        println("Has permissions")
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -186,7 +174,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
         if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
-            if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient()
                 mMap.isMyLocationEnabled = true
             }

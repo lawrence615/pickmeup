@@ -53,21 +53,24 @@
             android:padding="@dimen/padding">
 
             <android.support.v7.widget.LinearLayoutCompat
-                android:id="@+id/layoutTruck"
+                android:id="@+id/layoutPickUp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imgTruck"
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/imgbPickUp"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:background="@drawable/vehicle_type_button"
                     android:src="@mipmap/ic_launcher_round" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/labelTruck"
+                    android:id="@+id/labelPickUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/icon_pickup_label" />
@@ -82,10 +85,11 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imgVan"
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/imgbVan"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:background="@drawable/vehicle_type_button"
                     android:src="@mipmap/ic_launcher_round" />
 
                 <android.support.v7.widget.AppCompatTextView
@@ -104,10 +108,11 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/imgLorry"
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/imgbLorry"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:background="@drawable/vehicle_type_button"
                     android:src="@mipmap/ic_launcher_round" />
 
                 <android.support.v7.widget.AppCompatTextView

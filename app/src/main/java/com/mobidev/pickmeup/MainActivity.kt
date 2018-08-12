@@ -2,6 +2,7 @@ package com.mobidev.pickmeup
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Criteria
 import android.location.Location
@@ -11,6 +12,12 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.AppCompatImageButton
+import android.view.View
+import android.widget.Toast
+import butterknife.BindView
+import butterknife.ButterKnife
+import butterknife.OnClick
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationCallback
@@ -24,6 +31,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mobidev.pickmeup.view.activities.PlaceActivity
 import pub.devrel.easypermissions.EasyPermissions
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, EasyPermissions.PermissionCallbacks {
@@ -36,15 +44,34 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
 
     companion object {
         const val MY_PERMISSIONS_REQUEST_LOCATION = 99
+        const val PLACE_REQUEST_CODE = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        ButterKnife.bind(this)
+
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+    }
+
+    @OnClick(R.id.imgbPickUp, R.id.imgbVan, R.id.imgbLorry)
+    fun onClick(view: View) {
+
+        val intentPlaceView = Intent(this@MainActivity, PlaceActivity::class.java)
+
+        when (view.id) {
+            R.id.imgbPickUp -> intentPlaceView.putExtra(PlaceActivity.KEY_VEHICLE_TYPE, "pickup")
+            R.id.imgbVan -> intentPlaceView.putExtra(PlaceActivity.KEY_VEHICLE_TYPE, "van")
+            R.id.imgbLorry -> intentPlaceView.putExtra(PlaceActivity.KEY_VEHICLE_TYPE, "lorry")
+        }
+
+        startActivityForResult(intentPlaceView, PLACE_REQUEST_CODE)
     }
 
     override fun onPause() {
@@ -75,6 +102,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
                 val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 val criteria = Criteria()
                 val myLocation = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
+
 
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(myLocation.latitude, myLocation.longitude), 15F))
             } else {
@@ -179,5 +207,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.Co
                 mMap.isMyLocationEnabled = true
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
